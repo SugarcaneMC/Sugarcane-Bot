@@ -5,6 +5,13 @@ __metadata:
   version: 4
   cacheKey: 7
 
+"@auric/discord-akairo@npm:^8.2.3":
+  version: 8.2.3
+  resolution: "@auric/discord-akairo@npm:8.2.3"
+  checksum: 9b6697801ba631aefa8c6d1651a5158c2d48b6af5ce365fadab796566c7da3c5e99c69460b206f59b0e99018a2d0aafdd7750fd639908bb63b9dcde6c63e510f
+  languageName: node
+  linkType: hard
+
 "@discordjs/collection@npm:^0.1.6":
   version: 0.1.6
   resolution: "@discordjs/collection@npm:0.1.6"
@@ -23,11 +30,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^15.12.4":
+  version: 15.12.4
+  resolution: "@types/node@npm:15.12.4"
+  checksum: 64b121a7e805379382aeb3eefed56c4c34f1ebf5e818ba2c732e43beebc4fbde20be438f3eaaffd8dba5062f0e0c9ae085127b7239906d170eda816885a6c508
+  languageName: node
+  linkType: hard
+
 "Sugarcane-Bot@workspace:.":
   version: 0.0.0-use.local
   resolution: "Sugarcane-Bot@workspace:."
   dependencies:
+    "@auric/discord-akairo": ^8.2.3
+    "@types/node": ^15.12.4
     discord.js: ^12.5.3
+    tslib: ^2.3.0
+    tslog: ^3.2.0
     typescript: ^4.3.4
   languageName: unknown
   linkType: soft
@@ -45,6 +63,13 @@ __metadata:
   version: 0.4.0
   resolution: "asynckit@npm:0.4.0"
   checksum: a024000b9ddd938e2f27b3cb8188f96a5e1fff58185e98b84862fc4e01de279a547874a800340c2b106bb9de9b0fc61c6c683bc6892abf65e6be29a96addafd3
+  languageName: node
+  linkType: hard
+
+"buffer-from@npm:^1.0.0":
+  version: 1.1.1
+  resolution: "buffer-from@npm:1.1.1"
+  checksum: 540ceb79c4f5bfcadaabbc18324fa84c50dc52905084be7c03596a339cf5a88513bee6831ce9b36ddd046fab09257a7c80686e129d0559a0cfd141da196ad956
   languageName: node
   linkType: hard
 
@@ -135,6 +160,39 @@ __metadata:
   version: 1.0.5
   resolution: "setimmediate@npm:1.0.5"
   checksum: 87884d8add4779fe47ccf763396a5bf875640ae34d80a10802da4de5c25d87647c12f6e7748fd5b8c143b57201caf2a5a781631456c228825f166ca305c12f20
+  languageName: node
+  linkType: hard
+
+"source-map-support@npm:^0.5.19":
+  version: 0.5.19
+  resolution: "source-map-support@npm:0.5.19"
+  dependencies:
+    buffer-from: ^1.0.0
+    source-map: ^0.6.0
+  checksum: 59d4efaae97755155b078413ecba63517e3ef054cc7ab767bbd30e6f3054be2ae8e8f5cce7eef53b7eb93e98fe27a58dd8f5e7abfb13144ba420ddaf5267bbb2
+  languageName: node
+  linkType: hard
+
+"source-map@npm:^0.6.0":
+  version: 0.6.1
+  resolution: "source-map@npm:0.6.1"
+  checksum: 8647829a0611724114022be455ca1c8a2c8ae61df81c5b3667d9b398207226a1e21174fb7bbf0b4dbeb27ac358222afb5a14f1c74a62a62b8883b012e5eb1270
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "tslib@npm:2.3.0"
+  checksum: 7b4fc9feff0f704743c3760f5d8d708f6417fac6458159e63df3a6b1100f0736e3b99edb9fe370f274ad15160a1f49ff05cb49402534c818ff552c48e38c3e6e
+  languageName: node
+  linkType: hard
+
+"tslog@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "tslog@npm:3.2.0"
+  dependencies:
+    source-map-support: ^0.5.19
+  checksum: 304b2b904341ed2f1bad78b775ef30339c258d9799b71acfb784fd84d50687adc75006ed620951f7badd853635daa7444bf78bee813480f6dbc15ef0cee17a66
   languageName: node
   linkType: hard
 
