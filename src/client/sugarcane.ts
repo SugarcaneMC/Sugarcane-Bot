@@ -2,20 +2,24 @@ import { AkairoClient, ListenerHandler } from '@auric/discord-akairo';
 import { Intents } from 'discord.js';
 import path from 'path';
 import { Logger } from "tslog";
+import config from '../config';
 
-interface SugarcaneOptions {
-	ownerID?: string | string[];
-	token?: string;
+declare module '@auric/discord-akairo' {
+	interface AkairoClient {
+		config: typeof config;
+		logger: Logger;
+		listenerHandler: ListenerHandler;
+	}
 }
 
 export default class SugarcaneClient extends AkairoClient {
-	public config: SugarcaneOptions;
+	public config: typeof config;
 	public logger: Logger
-	public listenerHandler = new ListenerHandler(this, {
+	public listenerHandler: ListenerHandler = new ListenerHandler(this, {
 		directory: path.join(__dirname, '..', 'listeners')
 	})
 
-	public constructor(config: SugarcaneOptions) {
+	public constructor() {
 		super({ ownerID: config.ownerID}, { ws: { intents: [Intents.ALL] } });
 		
 		this.config = config;
