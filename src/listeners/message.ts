@@ -53,7 +53,7 @@ export default class MessageListner extends Listener {
 
 			}
 			await checkServerPlugins(embed, timingsData, this.client as SugarcaneClient);
-			await checkServerConfigs(embed, timingsData, this.client as SugarcaneClient);
+			// await checkServerConfigs(embed, timingsData, this.client as SugarcaneClient);
 			// checkServerPlugins(embed, timingsData, this.client as SugarcaneClient);
 			// checkServerPlugins(embed, timingsData, this.client as SugarcaneClient);
 			// checkServerPlugins(embed, timingsData, this.client as SugarcaneClient);
