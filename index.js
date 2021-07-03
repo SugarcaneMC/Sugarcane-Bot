@@ -23,7 +23,22 @@ bot.on('message', (msg) => {
     const cmd = args.shift().toLowerCase();
     if (msg.content.toLowerCase().startsWith(prefix)) {
         switch (cmd) {
-
+            // Admin Commands
+            case "admin": 
+                if(!msg.member.permissions.has("ADMINISTRATOR")) return msg.channel.send(`You cannot do that <@${msg.author.id}>!`);
+                if(!args[0]) return msg.channel.send(`Please provide a valid subcommand\n\`${prefix}admin <subcommand> [arguments]\``);
+                switch (args[0]) {
+                    case "restart":
+                        msg.channel.send("Restarting...").then(() => {
+                            bot.destroy();
+                            process.exit(0);
+                        });
+                        break;
+                
+                    default:
+                        msg.channel.send(`\`${prefix}${args[0]}\` is not a valid subcommand`);
+                }
+                break;
         }
     }
 })
