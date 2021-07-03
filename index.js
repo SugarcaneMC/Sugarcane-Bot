@@ -28,6 +28,6 @@ bot.on('message', (msg) => {
     }
 })
 
-bot.login().catch((err) => {
+bot.login(config.discord.token).catch((err) => {
     log.log("err", err, true);
 });
