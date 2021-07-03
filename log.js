@@ -9,3 +9,4 @@ module.exports.log = (message, critical) => {
     newLog.finalize((err) => {
         if (critical) process.exit(1);
     });
+};
