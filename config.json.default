@@ -1,5 +1,6 @@
 {
     "discord": {
-        "token": "PutYourTokenHere"
+        "token": "PutYourTokenHere",
+        "prefix": "="
     }
 }
