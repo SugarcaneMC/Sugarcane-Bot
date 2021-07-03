@@ -36,8 +36,12 @@ bot.on('message', (msg) => {
                         break;
                 
                     default:
-                        msg.channel.send(`\`${prefix}${args[0]}\` is not a valid subcommand`);
+                        msg.channel.send(`\`${args[0]}\` is not a valid subcommand`);
                 }
+                break;
+
+            default:
+                msg.channel.send(`\`${prefix}${cmd}\` Not found!`)
                 break;
         }
     }
