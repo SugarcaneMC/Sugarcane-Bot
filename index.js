@@ -2,6 +2,7 @@ const log = require("./log.js")
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const config = require("./config.json");
+const { isAsyncFunction } = require("util/types");
 
 bot.on('ready', () => {
     console.log(`Logged in as ${bot.user.tag}`);
@@ -11,7 +12,7 @@ bot.on('guildMemberAdd', (member) => {
     switch (member.guild.id) {
         case "855918593497759754":
             member.roles.add("855981133731856414").catch((err) => {
-                log.log("err", err, false);
+                log.log(err);
             })
             break;
     }
@@ -34,7 +35,15 @@ bot.on('message', (msg) => {
                             process.exit(0);
                         });
                         break;
-                
+                    case "logs":
+                        var embed = new Discord.MessageEmbed;
+                        embed.setTitle("Latest logs");
+                        log.db.each("SELECT * FROM logs LIMIT 25", (err, row) => {
+                            embed.fields.push({name: row.timestamp, value: row.log});
+                        }, (err) => {
+                            msg.channel.send(embed);
+                        })
+                        break;
                     default:
                         msg.channel.send(`\`${args[0]}\` is not a valid subcommand`);
                 }
@@ -48,5 +57,5 @@ bot.on('message', (msg) => {
 })
 
 bot.login(config.discord.token).catch((err) => {
-    log.log("err", err, true);
+    log.log(err, true);
 });
