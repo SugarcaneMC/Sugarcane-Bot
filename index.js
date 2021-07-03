@@ -1,3 +1,4 @@
+const log = require("./log.js")
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const config = require("./config.json");
@@ -7,9 +8,11 @@ bot.on('ready', () => {
 })
 
 bot.on('guildMemberAdd', (member) => {
-    switch(member.guild.id) {
+    switch (member.guild.id) {
         case "855918593497759754":
-            member.roles.add("855981133731856414")
+            member.roles.add("855981133731856414").catch((err) => {
+                log("err", err)
+            })
             break;
     }
 })
@@ -20,9 +23,11 @@ bot.on('message', (msg) => {
     const cmd = args.shift().toLowerCase();
     if (msg.content.toLowerCase().startsWith(prefix)) {
         switch (cmd) {
-            
+
         }
     }
 })
 
-bot.login(config.discord.token);
+bot.login().catch((err) => {
+    log("err", err, true);
+});
