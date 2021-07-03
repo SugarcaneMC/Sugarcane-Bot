@@ -2,7 +2,7 @@ const log = require("./log.js")
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const config = require("./config.json");
-console.log(JSON.stringify(config));
+
 bot.on('ready', () => {
     console.log(`Logged in as ${bot.user.tag}`);
 })
@@ -10,9 +10,9 @@ bot.on('ready', () => {
 bot.on('guildMemberAdd', (member) => {
     switch (member.guild.id) {
         case "855918593497759754":
-            member.roles.add("855981133731856414")/*.catch((err) => {
+            member.roles.add("855981133731856414").catch((err) => {
                 log.log("err", err, false);
-            })*/
+            })
             break;
     }
 })
@@ -28,6 +28,6 @@ bot.on('message', (msg) => {
     }
 })
 
-bot.login()/*.catch((err) => {
+bot.login(config.discord.token).catch((err) => {
     log.log("err", err, true);
-});*/
+});
