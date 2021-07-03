@@ -1,0 +1,22 @@
+{
+  "name": "sugarcane-bot",
+  "version": "1.0.0",
+  "description": "The bot for sugarcaneMC\r **THIS BOT IS IN HEAVY DEVELOPMENT**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SugarcaneMC/Sugarcane-Bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SugarcaneMC/Sugarcane-Bot/issues"
+  },
+  "homepage": "https://github.com/SugarcaneMC/Sugarcane-Bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}
