@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3');
 const logdb = new sqlite3.Database('logs.db');
 logdb.exec('CREATE TABLE IF NOT EXISTS logs ("timestamp" TEXT NOT NULL, log TEXT);');
 logdb.exec('CREATE TABLE IF NOT EXISTS errors ("timestamp" TEXT NOT NULL, error TEXT);')
-module.exports = (type, message, critical) => {
+module.exports.log = (type, message, critical) => {
     var timestamp = new Date().toISOString();
     switch (type) {
         case "err":
