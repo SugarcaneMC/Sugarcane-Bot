@@ -22,7 +22,6 @@ bot.on('ready', () => {
         folder: '.'
     }, function (err, meta) {
         if (err) throw new Error(err);
-        console.log(meta)
         if (!meta.next_rev) return;
         log.log(`Update detected, New revision id is ${meta.next_reg}. Restarting!`, true);
     });
