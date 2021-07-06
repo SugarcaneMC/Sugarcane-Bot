@@ -18,6 +18,7 @@
   "homepage": "https://github.com/SugarcaneMC/Sugarcane-Bot#readme",
   "dependencies": {
     "discord.js": "^12.5.3",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "vizion": "^2.2.1"
   }
 }
