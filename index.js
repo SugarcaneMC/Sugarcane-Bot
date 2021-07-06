@@ -23,6 +23,8 @@ bot.on('message', (msg) => {
     const args = msg.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
     if (msg.content.toLowerCase().startsWith(prefix)) {
+        if(!/^[a-zA-Z0-9]+$/.test(cmd)) return; //This is a temporary fix so the bot doesnt respond to commands that are not alphanumeric, i.e any command (<prefix><command> <arguments>) that contains symbols will be ignored.
+        //To clarify, arguments with symbols will NOT be ignored, only root commands themselves
         switch (cmd) {
             // Admin Commands
             case "admin": 
