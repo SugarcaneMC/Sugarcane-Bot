@@ -9,6 +9,7 @@ const {
 
 bot.on('ready', () => {
     console.log(`Logged in as ${bot.user.tag}`);
+    /*This didn't work, I'll fix it later
     const autoUpdate = setInterval(() => {
         vizion.analyze({
             folder: '.'
@@ -24,7 +25,7 @@ bot.on('ready', () => {
         if (err) throw new Error(err);
         if (!meta.next_rev) return;
         log.log(`Update detected, New revision id is ${meta.next_reg}. Restarting!`, true);
-    });
+    });*/
 })
 
 bot.on('guildMemberAdd', (member) => {
