@@ -27,7 +27,7 @@ bot.on('ready', () => {
                 console.log(`Creating new channel for ${branch.name}, called ${nameA}`)
                 bot.guilds.cache.get(config.discord.staffguild).channels.create(nameA, {
                     parent: config.discord.branches,
-                    topic: `https://github.com/SugarcaneMC/tree/${branch.name} Discussion`
+                    topic: `https://github.com/SugarcaneMC/Sugarcane/tree/${branch.name} Discussion`
                 });
             }
         })
