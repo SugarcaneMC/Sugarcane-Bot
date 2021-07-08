@@ -21,13 +21,13 @@ bot.on('ready', () => {
         }
     }, (err, res, body) => {
         if (err || res.statusCode !== 200) console.log(`${res.statusCode}${err?` | ${err}`:""}`);
-        body.forEach((branch) => {
+        body.slice().reverse().forEach((branch) => {
             nameA = branch.name.replace(/[^\w\-]/gi, "-").toLowerCase();
             if (!bot.guilds.cache.get(config.discord.staffguild).channels.cache.find(channel => channel.name.toLowerCase() === nameA)) {
                 console.log(`Creating new channel for ${branch.name}, called ${nameA}`)
                 bot.guilds.cache.get(config.discord.staffguild).channels.create(nameA, {
                     parent: config.discord.branches,
-                    topic: `https://github.com/SugarcaneMC/${branch.name} Discussion`
+                    topic: `https://github.com/SugarcaneMC/tree/${branch.name} Discussion`
                 });
             }
         })
