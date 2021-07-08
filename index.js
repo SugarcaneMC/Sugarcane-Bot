@@ -1,5 +1,6 @@
 const log = require("./log.js")
-var vizion = require('vizion');
+const vizion = require('vizion');
+const request = require('request');
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const config = require("./config.json");
@@ -7,8 +8,27 @@ const {
     isAsyncFunction
 } = require("util/types");
 
+branchData = {};
+
 bot.on('ready', () => {
     console.log(`Logged in as ${bot.user.tag}`);
+
+    request("https://api.github.com/repos/SugarcaneMC/Sugarcane/branches", {
+        json: true,
+        headers: {
+            "User-Agent": `Sugarcane Bot/1.0 (+https://sugarcanemc.org/)`,
+            "Authorization": config.github.accesstoken
+        }
+    }, (err, res, body) => {
+        if (err || res.statusCode !== 200) console.log(`${res.statusCode}${err?` | ${err}`:""}`);
+        body.forEach((branch) => {
+            nameA = branch.name.replace(/[^\w\-]/gi, "-");
+            if (!bot.guilds.cache.get("859043020757794856").channels.cache.find(channel => channel.name.toLowerCase() === nameA)) bot.guilds.cache.get("859043020757794856").channels.create(nameA, {
+                parent: "862492266517757982"
+            });
+        })
+    })
+
     /*This didn't work, I'll fix it later
     const autoUpdate = setInterval(() => {
         vizion.analyze({
@@ -74,7 +94,7 @@ bot.on('message', (msg) => {
                 }
                 break;
             case "info":
-                if(!args[0]) args[0] = "";
+                if (!args[0]) args[0] = "";
                 switch (args[0].toLowerCase()) {
                     case "bot":
                         vizion.analyze({
