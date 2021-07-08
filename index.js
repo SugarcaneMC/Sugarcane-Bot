@@ -12,26 +12,27 @@ branchData = {};
 
 bot.on('ready', () => {
     console.log(`Logged in as ${bot.user.tag}`);
-
-    request("https://api.github.com/repos/SugarcaneMC/Sugarcane/branches", {
-        json: true,
-        headers: {
-            "User-Agent": `Sugarcane Bot/1.0 (+https://sugarcanemc.org/)`,
-            "Authorization": config.github.accesstoken
-        }
-    }, (err, res, body) => {
-        if (err || res.statusCode !== 200) console.log(`${res.statusCode}${err?` | ${err}`:""}`);
-        body.slice().reverse().forEach((branch) => {
-            nameA = branch.name.replace(/[^\w\-]/gi, "-").toLowerCase();
-            if (!bot.guilds.cache.get(config.discord.staffguild).channels.cache.find(channel => channel.name.toLowerCase() === nameA)) {
-                console.log(`Creating new channel for ${branch.name}, called ${nameA}`)
-                bot.guilds.cache.get(config.discord.staffguild).channels.create(nameA, {
-                    parent: config.discord.branches,
-                    topic: `https://github.com/SugarcaneMC/Sugarcane/tree/${branch.name} Discussion`
-                });
+    if (config.discord.branchchannels) {
+        request("https://api.github.com/repos/SugarcaneMC/Sugarcane/branches", {
+            json: true,
+            headers: {
+                "User-Agent": `Sugarcane Bot/1.0 (+https://sugarcanemc.org/)`,
+                "Authorization": config.github.accesstoken
             }
+        }, (err, res, body) => {
+            if (err || res.statusCode !== 200) console.log(`${res.statusCode}${err?` | ${err}`:""}`);
+            body.slice().reverse().forEach((branch) => {
+                nameA = branch.name.replace(/[^\w\-]/gi, "-").toLowerCase();
+                if (!bot.guilds.cache.get(config.discord.staffguild).channels.cache.find(channel => channel.name.toLowerCase() === nameA)) {
+                    console.log(`Creating new channel for ${branch.name}, called ${nameA}`)
+                    bot.guilds.cache.get(config.discord.staffguild).channels.create(nameA, {
+                        parent: config.discord.branches,
+                        topic: `https://github.com/SugarcaneMC/Sugarcane/tree/${branch.name} Discussion`
+                    });
+                }
+            })
         })
-    })
+    }
 
     /*This didn't work, I'll fix it later
     const autoUpdate = setInterval(() => {
