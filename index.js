@@ -26,7 +26,7 @@ bot.on('ready', () => {
             if (!bot.guilds.cache.get(config.discord.staffguild).channels.cache.find(channel => channel.name.toLowerCase() === nameA)) {
                 console.log(`Creating new channel for ${branch.name}, called ${nameA}`)
                 bot.guilds.cache.get(config.discord.staffguild).channels.create(nameA, {
-                    parent: config.discord.branchcategory,
+                    parent: config.discord.branches,
                     topic: `https://github.com/SugarcaneMC/${branch.name} Discussion`
                 });
             }
