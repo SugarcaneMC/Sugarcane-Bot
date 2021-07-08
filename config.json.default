@@ -1,6 +1,11 @@
 {
     "discord": {
         "token": "PutYourTokenHere",
-        "prefix": "="
+        "prefix": "=",
+        "staffguild": "StaffGuildID",
+        "branches": "mainbranchchannelid"
+    },
+    "github": {
+        "accesstoken": "TokenHere"
     }
 }

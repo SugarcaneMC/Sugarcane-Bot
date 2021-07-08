@@ -22,10 +22,13 @@ bot.on('ready', () => {
     }, (err, res, body) => {
         if (err || res.statusCode !== 200) console.log(`${res.statusCode}${err?` | ${err}`:""}`);
         body.forEach((branch) => {
-            nameA = branch.name.replace(/[^\w\-]/gi, "-");
-            if (!bot.guilds.cache.get("859043020757794856").channels.cache.find(channel => channel.name.toLowerCase() === nameA)) bot.guilds.cache.get("859043020757794856").channels.create(nameA, {
-                parent: "862492266517757982"
-            });
+            nameA = branch.name.replace(/[^\w\-]/gi, "-").toLowerCase();
+            if (!bot.guilds.cache.get(config.discord.staffguild).channels.cache.find(channel => channel.name.toLowerCase() === nameA)) {
+                console.log(`Creating new channel for ${branch.name}, called ${nameA}`)
+                bot.guilds.cache.get(config.discord.staffguild).channels.create(nameA, {
+                    parent: config.discord.branchcategory
+                });
+            }
         })
     })
 
